@@ -47,7 +47,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var root = _react2.default.createElement(
     _reactRedux.Provider,
     { store: _store.store },
-    _react2.default.createElement(_parent.P, null)
+    _react2.default.createElement(_parent.Par, null)
 );
 var rootElement = document.getElementById('app');
 
@@ -113,7 +113,7 @@ exports.Child = Child;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.P = undefined;
+exports.Par = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -155,7 +155,6 @@ var Parent = function (_React$Component) {
     _createClass(Parent, [{
         key: 'render',
         value: function render() {
-            console.log(this.props);
             return _react2.default.createElement(
                 'div',
                 null,
@@ -180,20 +179,20 @@ var Parent = function (_React$Component) {
 //将state.text绑定到props.text
 
 
-var state = _store.store.getState();
-function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state) {
     return {
         text: state.text
     };
-}
+};
+
 //将action的所有方法绑定到props上
-function mapDispatchToProps(dispatch) {
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return (0, _redux.bindActionCreators)(rootActions, dispatch);
-}
+};
 
 //通过react-redux提供的connect方法将我们需要的state中的数据和actions中的方法绑定到props上
-var P = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Parent);
-exports.P = P;
+var Par = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Parent);
+exports.Par = Par;
 
 },{"../actions/action":1,"../store/store":8,"./child.jsx":4,"react":193,"react-redux":41,"redux":199}],6:[function(require,module,exports){
 'use strict';
@@ -203,6 +202,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.todoReducer = undefined;
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _action = require('../actions/action');
 
 var todoReducer = function todoReducer() {
@@ -211,8 +212,11 @@ var todoReducer = function todoReducer() {
 
     switch (action.type) {
         case 'ADD_TODO':
-            return Object.assign({}, state, {
-                text: '_加入的。'
+            /*return Object.assign({}, state , {
+                text:'_加入的。'
+            })*/
+            return _extends({}, state, {
+                text: text
             });
         default:
             return state;
