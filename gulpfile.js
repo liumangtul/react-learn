@@ -30,10 +30,10 @@ gulp.task('watch', ['build'], function () {
 
 gulp.task('default', ['watch']);*/
 
+
 var gulp = require("gulp");
 var browserify = require("browserify");
 var babelify = require("babelify");
-var reactify = require("gulp-reactify");
 var source = require("vinyl-source-stream");
 
 gulp.task('jsx', function(){

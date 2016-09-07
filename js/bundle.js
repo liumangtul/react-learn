@@ -15,7 +15,11 @@ var Child = exports.Child = React.createClass({
     displayName: "Child",
 
     render: function render() {
-        return React.createElement("div", null, " The Child ");
+        return React.createElement(
+            "div",
+            null,
+            " The Child "
+        );
     }
 });
 
@@ -33,7 +37,16 @@ var Parent = exports.Parent = React.createClass({
     displayName: 'Parent',
 
     render: function render() {
-        return React.createElement('div', null, React.createElement('div', null, ' Hello World '), React.createElement(_child.Child, null));
+        return React.createElement(
+            'div',
+            null,
+            React.createElement(
+                'div',
+                null,
+                ' Hello World '
+            ),
+            React.createElement(_child.Child, null)
+        );
     }
 });
 
