@@ -8,7 +8,7 @@
 import React from 'react';
 class Child extends React.Component {
     render(){
-        return <div> The Child </div>
+        return <div> 孩子 </div>
     }
 }
 export {Child}

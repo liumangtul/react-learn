@@ -14,7 +14,7 @@ import React from 'react';
 class Parent extends React.Component {
     render(){
         return <div>
-            <div>Hello World</div>
+            <div>你好</div>
             <Child/>
         </div>
     }
