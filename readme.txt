@@ -26,3 +26,10 @@ npm install babel-cli --save-dev
 babel-preset-react
 
 npm install babel-preset-react --save-dev
+
+
+参考：
+
+http://www.jianshu.com/p/tY6UPN
+http://zhidao.baidu.com/link?url=0acXs_zd-v33wZGsF-1KmSmv9KornVFPosGKMprYYb7QJAzS2FbbpWEIQDveVtJ8RdvOg7LN8EDyBI9o7NuA9xGBGBAw4iIEzTsrW3ujC6a
+http://zhidao.baidu.com/link?url=lwdu1riWi2S8BGsnyhQap8JgzjTHPw5948HEaZkxCld-bvtTX5jd2YYHU6BKk2Ncde060wouqTnC3nMgNj6APzCcQQoby__KqJ5V_AZE-XG
