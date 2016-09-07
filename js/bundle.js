@@ -36,20 +36,21 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _parent = require('./components/parent.jsx');
-
 var _reactRedux = require('react-redux');
 
 var _store = require('./store/store');
+
+var _parent = require('./components/parent.jsx');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var root = _react2.default.createElement(
     _reactRedux.Provider,
     { store: _store.store },
-    _react2.default.createElement(_parent.Parent, null)
+    _react2.default.createElement(_parent.P, null)
 );
 var rootElement = document.getElementById('app');
+
 _reactDom2.default.render(root, rootElement);
 
 },{"./components/parent.jsx":5,"./store/store":8,"react":193,"react-dom":38,"react-redux":41}],4:[function(require,module,exports){
@@ -112,15 +113,27 @@ exports.Child = Child;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Parent = undefined;
+exports.P = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _child = require('./child.jsx');
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _child = require('./child.jsx');
+
+var _action = require('../actions/action');
+
+var rootActions = _interopRequireWildcard(_action);
+
+var _reactRedux = require('react-redux');
+
+var _redux = require('redux');
+
+var _store = require('../store/store');
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -129,18 +142,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-/*
-export let Parent = React.createClass({
-    render: function(){
-        return (
-            <div>
-                <div> Hello World </div>
-                <Child/>
-            </div>
-        )
-    }
-});*/
-
 
 var Parent = function (_React$Component) {
     _inherits(Parent, _React$Component);
@@ -154,6 +155,7 @@ var Parent = function (_React$Component) {
     _createClass(Parent, [{
         key: 'render',
         value: function render() {
+            console.log(this.props);
             return _react2.default.createElement(
                 'div',
                 null,
@@ -161,6 +163,11 @@ var Parent = function (_React$Component) {
                     'div',
                     null,
                     '你好'
+                ),
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    this.props.text
                 ),
                 _react2.default.createElement(_child.Child, null)
             );
@@ -170,9 +177,25 @@ var Parent = function (_React$Component) {
     return Parent;
 }(_react2.default.Component);
 
-exports.Parent = Parent;
+//将state.text绑定到props.text
 
-},{"./child.jsx":4,"react":193}],6:[function(require,module,exports){
+
+var state = _store.store.getState();
+function mapStateToProps(state) {
+    return {
+        text: state.text
+    };
+}
+//将action的所有方法绑定到props上
+function mapDispatchToProps(dispatch) {
+    return (0, _redux.bindActionCreators)(rootActions, dispatch);
+}
+
+//通过react-redux提供的connect方法将我们需要的state中的数据和actions中的方法绑定到props上
+var P = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Parent);
+exports.P = P;
+
+},{"../actions/action":1,"../store/store":8,"./child.jsx":4,"react":193,"react-redux":41,"redux":199}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

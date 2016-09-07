@@ -37,3 +37,7 @@ http://zhidao.baidu.com/link?url=lwdu1riWi2S8BGsnyhQap8JgzjTHPw5948HEaZkxCld-bvt
 npm init
 npm install --save-dev gulp browserify vinyl-source-stream babelify babel-cli babel-preset-react babel-preset-es2015 babel-preset-stage-0 react react-dom redux react-redux
 gulp jsx
+
+相关学习资料
+React+Redux系列教程
+https://github.com/lewis617/react-redux-tutorial
