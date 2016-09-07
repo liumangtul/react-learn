@@ -33,3 +33,7 @@ npm install babel-preset-react --save-dev
 http://www.jianshu.com/p/tY6UPN
 http://zhidao.baidu.com/link?url=0acXs_zd-v33wZGsF-1KmSmv9KornVFPosGKMprYYb7QJAzS2FbbpWEIQDveVtJ8RdvOg7LN8EDyBI9o7NuA9xGBGBAw4iIEzTsrW3ujC6a
 http://zhidao.baidu.com/link?url=lwdu1riWi2S8BGsnyhQap8JgzjTHPw5948HEaZkxCld-bvtTX5jd2YYHU6BKk2Ncde060wouqTnC3nMgNj6APzCcQQoby__KqJ5V_AZE-XG
+
+npm init
+npm install --save-dev gulp browserify vinyl-source-stream babelify babel-cli babel-preset-react babel-preset-es2015 babel-preset-stage-0 react react-dom redux react-redux
+gulp jsx
