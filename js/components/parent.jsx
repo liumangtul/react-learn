@@ -1,4 +1,5 @@
 import {Child} from './child.jsx';
+/*
 export let Parent = React.createClass({
     render: function(){
         return (
@@ -8,4 +9,14 @@ export let Parent = React.createClass({
             </div>
         )
     }
-});
+});*/
+import React from 'react';
+class Parent extends React.Component {
+    render(){
+        return <div>
+            <div>Hello World</div>
+            <Child/>
+        </div>
+    }
+}
+export {Parent};
