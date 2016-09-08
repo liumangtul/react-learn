@@ -6,7 +6,11 @@ import {bindActionCreators} from 'redux';
 import {store} from '../store/store';
 
 class Parent extends React.Component {
+    constructor (props){
+        super(props)
+    }
     render(){
+        console.log(this)
         return <div>
             <div>你好</div>
             <div>{this.props.text}</div>
@@ -16,7 +20,7 @@ class Parent extends React.Component {
 }
 
 //将state.text绑定到props.text
-let mapStateToProps = (state) => {
+let mapStateToProps = (state={text:'Default.'}) => {
     return {
         text: state.text
     }
